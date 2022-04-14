@@ -1,0 +1,6 @@
+local gameid = game.PlaceId
+if gameid == 1537690962 then
+  loadstring("https://raw.githubusercontent.com/jakiemarkar/NeNec/main/BeeSwarm", true)
+elseif gameid == 6679274937 then
+  loadstring("https://raw.githubusercontent.com/jakiemarkar/NeNec/main/Vans", true)
+end
