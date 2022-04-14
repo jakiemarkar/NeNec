@@ -513,3 +513,15 @@ local function EXOQ_fake_script() -- MainFrame.Mouse
 	end)
 end
 coroutine.wrap(EXOQ_fake_script)()
+
+game.Workspace.Collectibles.ChildAdded:Connect(function(child)
+	local char = game.Players.LocalPlayer.Character
+	local root = char:FindFirstChild("HumanoidRootPart")
+	local human = char:FindFirstChild("Humanoid")
+	local magni = (root.Position - child.Position).Magnitude
+	if magni <= 72 then
+		if child then
+           		human:MoveTo(child.Position)
+		end
+	end
+end)
