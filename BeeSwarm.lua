@@ -341,6 +341,10 @@ local function BYXA_fake_script() -- Autofarm.AutoFarmScript
 			repeat
 				wait(0.25)
 			until root and human and human.Health ~= 0
+			wait(2)
+			char = game.Players.LocalPlayer.Character
+			root = char:WaitForChild("HumanoidRootPart")
+			human = char:WaitForChild("Humanoid")
 			if enabled.Value and canfarm then
 				if game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value) then
 					root.CFrame = game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value).CFrame
