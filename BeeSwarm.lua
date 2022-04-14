@@ -288,7 +288,16 @@ farmingvalue.Parent = Autofarm
 local FieldValue = Instance.new("StringValue")
 FieldValue.Name = "Field"
 FieldValue.Parent = Autofarm
+
+local char = game.Players.LocalPlayer.Character
+local root = char:WaitForChild("HumanoidRootPart")
+local human = char:WaitForChild("Humanoid")
+local died = false
 -- Scripts:
+
+human.Died:Connect(function()
+	died = true
+end)
 
 local function TMWBRLZ_fake_script() -- AllCodes.AllCodesScript 
 	local script = Instance.new('LocalScript', AllCodes)
@@ -306,7 +315,6 @@ local function BYXA_fake_script() -- Autofarm.AutoFarmScript
 
 	local canfarm = true
 	local selling = false
-	local died = false
 	local loops = 0
 	local field = script.Parent:WaitForChild("Field")
 	local enabled = farmingvalue
@@ -323,18 +331,15 @@ local function BYXA_fake_script() -- Autofarm.AutoFarmScript
 		end
 	end)
 	
-	local char = game.Players.LocalPlayer.Character
-	local root = char:WaitForChild("HumanoidRootPart")
-	local human = char:WaitForChild("Humanoid")
-	
 	while true do
+		wait(0.25)
 		if died then
 			char = game.Players.LocalPlayer.Character
 			root = char:WaitForChild("HumanoidRootPart")
 			human = char:WaitForChild("Humanoid")
 			repeat
 				wait(0.25)
-			until root
+			until root and human and human.Health ~= 0
 			if enabled.Value and canfarm then
 				if game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value) then
 					root.CFrame = game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value).CFrame
@@ -343,7 +348,6 @@ local function BYXA_fake_script() -- Autofarm.AutoFarmScript
 			selling = false
 			died = false
 		end
-		wait(0.25)
 		if not selling and enabled.Value and canfarm and not died then
 			if tostring(game.Players.LocalPlayer.PlayerGui.ScreenGui.MeterHUD.PollenMeter.Bar.FillBar.Size) == "{1, 0}, {1, 0}" then
 				canfarm = false
@@ -394,9 +398,6 @@ local function BYXA_fake_script() -- Autofarm.AutoFarmScript
 			loops += 1
 		end
 	end
-	human.Died:Connect(function()
-		died = true
-	end)
 end
 coroutine.wrap(BYXA_fake_script)()
 local function ZCAQYTY_fake_script() -- AutoDig.AutoDIgScript 
