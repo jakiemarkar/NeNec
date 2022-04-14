@@ -296,6 +296,14 @@ local human = char:WaitForChild("Humanoid")
 local died = false
 -- Scripts:
 
+for count = 1, 6 do
+	local args = {
+		[1] = count
+	}
+
+	game:GetService("ReplicatedStorage").Events.ClaimHive:FireServer(unpack(args))
+end
+
 human.Died:Connect(function()
 	died = true
 end)
