@@ -345,10 +345,9 @@ local function BYXA_fake_script() -- Autofarm.AutoFarmScript
 			char = game.Players.LocalPlayer.Character
 			root = char:WaitForChild("HumanoidRootPart")
 			human = char:WaitForChild("Humanoid")
-			if enabled.Value and canfarm then
-				if game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value) then
-					root.CFrame = game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value).CFrame
-				end
+			wait(2)
+			if game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value) then
+				root.CFrame = game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value).CFrame
 			end
 			selling = false
 			died = false
@@ -380,6 +379,7 @@ local function BYXA_fake_script() -- Autofarm.AutoFarmScript
 			end
 			if loops >= 5 then
 				loops = 0
+				root.CFrame = game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value).CFrame
 			end
 			local FarmField = game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value)
 			local MoveX = math.random(0, 1)
