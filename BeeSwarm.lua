@@ -6,6 +6,7 @@
 print("Thank you for choosing NeNec")
 
 local NeNec = Instance.new("ScreenGui")
+NeNec.ResetOnSpawn = false
 local MainFrame = Instance.new("ImageLabel")
 local FrameName = Instance.new("Frame")
 local GuiName = Instance.new("TextLabel")
