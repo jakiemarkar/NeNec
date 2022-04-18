@@ -4,7 +4,9 @@
 -- Instances:
 
 print("Thank you for choosing NeNec")
+print("NeNec has antiafk script, so you dont have to execute another scirpt :)")
 
+local pathfindingService = game:GetService("PathfindingService") 
 local NeNec = Instance.new("ScreenGui")
 NeNec.ResetOnSpawn = false
 local MainFrame = Instance.new("ImageLabel")
@@ -529,7 +531,9 @@ game.Workspace.Collectibles.ChildAdded:Connect(function(child)
 	local magni = (root.Position - child.Position).Magnitude
 	if magni <= 72 then
 		if child then
-           		human:MoveTo(child.Position)
+			if not selling and enabled.Value and canfarm and not died then
+           			human:MoveTo(child.Position)
+			end
 		end
 	end
 end)
