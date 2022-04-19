@@ -470,7 +470,7 @@ coroutine.wrap(LATHCAC_fake_script)()
 local function ZHEFGWT_fake_script(WrapScript) -- AllCodes.AllCodesScript 
 	local script = Instance.new('LocalScript', WrapScript)
 
-	script.Parent.MouseButton1Click:Connect(function()
+	WrapScript.Parent.MouseButton1Click:Connect(function()
 		FieldValue.Value = tostring(script.Parent.Text)
 	end)
 end
