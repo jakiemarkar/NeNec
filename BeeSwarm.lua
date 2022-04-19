@@ -37,7 +37,7 @@ local UICorner_7 = Instance.new("UICorner")
 local Settings_2 = Instance.new("Frame")
 local Teleportation_2 = Instance.new("Frame")
 local Visible = Instance.new("Folder")
-local Field = Instance.new("TextLabel")
+local Field = Instance.new("TextButton")
 local UICorner_8 = Instance.new("UICorner")
 
 --Properties:
