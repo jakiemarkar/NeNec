@@ -487,7 +487,7 @@ local function MOEXX_fake_script() -- Visible.Fields
 		local randomnumbers = math.random(10, 500)
 		newscript.Name = "FieldSelect".. tostring(randomnumbers)
 		newscript.Parent = fieldbutoon
-		coroutine.wrap(ZHEFGWT_fake_script)(field)
+		coroutine.wrap(ZHEFGWT_fake_script)(fieldbutoon)
 	end
 end
 coroutine.wrap(MOEXX_fake_script)()
