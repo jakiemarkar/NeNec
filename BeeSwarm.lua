@@ -467,10 +467,10 @@ local function LATHCAC_fake_script() -- Main_2.FieldFinder
 	end)
 end
 coroutine.wrap(LATHCAC_fake_script)()
-local function ZHEFGWT_fake_script(WrapScript) -- AllCodes.AllCodesScript 
-	local script = Instance.new('LocalScript', WrapScript)
+local function ZHEFGWT_fake_script(FarmButton)
+	local script = Instance.new('LocalScript', FarmButton)
 
-	WrapScript.Parent.MouseButton1Click:Connect(function()
+	script.Parent.MouseButton1Click:Connect(function()
 		FieldValue.Value = tostring(script.Parent.Text)
 	end)
 end
@@ -479,15 +479,15 @@ local function MOEXX_fake_script() -- Visible.Fields
 
 	local children = workspace.FlowerZones:GetChildren()
 	for i, child in ipairs(children) do
-		local field = script.Parent.Field:clone()
-		field.Text = child.Name
-		field.Visible = true
-		field.Parent = script.Parent.Parent.Selection.Main.ScrollingFrame
+		local fieldbutoon = script.Parent.Field:clone()
+		fieldbutoon.Text = child.Name
+		fieldbutoon.Visible = true
+		fieldbutoon.Parent = script.Parent.Parent.Selection.Main.ScrollingFrame
 		local newscript = Instance.new("LocalScript")
 		local randomnumbers = math.random(10, 500)
 		newscript.Name = "FieldSelect".. tostring(randomnumbers)
-		newscript.Parent = field
-		coroutine.wrap(ZHEFGWT_fake_script)(newscript)
+		newscript.Parent = fieldbutoon
+		coroutine.wrap(ZHEFGWT_fake_script)(field)
 	end
 end
 coroutine.wrap(MOEXX_fake_script)()
