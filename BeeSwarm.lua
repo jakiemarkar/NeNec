@@ -28,11 +28,7 @@ local Autofarm = Instance.new("TextButton")
 local UICorner_3 = Instance.new("UICorner")
 local AutoDig = Instance.new("TextButton")
 local UICorner_4 = Instance.new("UICorner")
-local FieldFinder = Instance.new("TextLabel")
 local UICorner_5 = Instance.new("UICorner")
-local FieldBox = Instance.new("TextBox")
-local UICorner_6 = Instance.new("UICorner")
-local FieldInfo = Instance.new("TextLabel")
 local UICorner_7 = Instance.new("UICorner")
 local Settings_2 = Instance.new("Frame")
 local Teleportation_2 = Instance.new("Frame")
@@ -203,54 +199,6 @@ AutoDig.TextSize = 14.000
 AutoDig.TextWrapped = true
 
 UICorner_4.Parent = AutoDig
-
-FieldFinder.Name = "FieldFinder"
-FieldFinder.Parent = Main_2
-FieldFinder.BackgroundColor3 = Color3.fromRGB(79, 79, 79)
-FieldFinder.Position = UDim2.new(0.54755044, 0, 0.447581947, 0)
-FieldFinder.Size = UDim2.new(0.409221888, 0, 0.0975601897, 0)
-FieldFinder.Font = Enum.Font.FredokaOne
-FieldFinder.Text = "Field..."
-FieldFinder.TextColor3 = Color3.fromRGB(139, 139, 139)
-FieldFinder.TextScaled = true
-FieldFinder.TextSize = 14.000
-FieldFinder.TextWrapped = true
-FieldFinder.TextXAlignment = Enum.TextXAlignment.Left
-
-UICorner_5.Parent = FieldFinder
-
-FieldBox.Name = "FieldBox"
-FieldBox.Parent = Main_2
-FieldBox.Active = false
-FieldBox.BackgroundColor3 = Color3.fromRGB(79, 79, 79)
-FieldBox.BackgroundTransparency = 1.000
-FieldBox.Position = UDim2.new(0.54755044, 0, 0.447581947, 0)
-FieldBox.Selectable = false
-FieldBox.Size = UDim2.new(0.409221888, 0, 0.0975601897, 0)
-FieldBox.ZIndex = 2
-FieldBox.Font = Enum.Font.FredokaOne
-FieldBox.Text = "Field..."
-FieldBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-FieldBox.TextScaled = true
-FieldBox.TextSize = 14.000
-FieldBox.TextWrapped = true
-FieldBox.TextXAlignment = Enum.TextXAlignment.Left
-
-UICorner_6.Parent = FieldBox
-
-FieldInfo.Name = "FieldInfo"
-FieldInfo.Parent = Main_2
-FieldInfo.BackgroundColor3 = Color3.fromRGB(79, 79, 79)
-FieldInfo.Position = UDim2.new(0.54755044, 0, 0.322175235, 0)
-FieldInfo.Size = UDim2.new(0.409221888, 0, 0.0975600779, 0)
-FieldInfo.Font = Enum.Font.FredokaOne
-FieldInfo.Text = "AutoFarmFieldsSelect"
-FieldInfo.TextColor3 = Color3.fromRGB(255, 255, 255)
-FieldInfo.TextScaled = true
-FieldInfo.TextSize = 14.000
-FieldInfo.TextWrapped = true
-
-UICorner_7.Parent = FieldInfo
 
 Settings_2.Name = "Settings"
 Settings_2.Parent = Selection
@@ -442,31 +390,6 @@ local function ZCAQYTY_fake_script() -- AutoDig.AutoDIgScript
 	end
 end
 coroutine.wrap(ZCAQYTY_fake_script)()
-local function LATHCAC_fake_script() -- Main_2.FieldFinder 
-	local script = Instance.new('LocalScript', Main_2)
-
-	local typing = false
-	local TypeBox = script.Parent.FieldBox
-	local FieldFind = script.Parent.FieldFinder
-	
-	TypeBox.Focused:Connect(function()
-		typing = true
-	end)
-	
-	TypeBox.FocusLost:Connect(function()
-		script.Parent.Autofarm.Field.Value = tostring(FieldFind.Text)
-	end)
-	
-	TypeBox:GetPropertyChangedSignal("Text"):Connect(function()
-		local children = workspace.FlowerZones:GetChildren()
-		for i, child in ipairs(children) do
-			if child.Name:find(TypeBox.Text) then
-				FieldFind.Text = tostring(child.Name)
-			end
-		end
-	end)
-end
-coroutine.wrap(LATHCAC_fake_script)()
 local function ZHEFGWT_fake_script(FarmButton)
 	local script = Instance.new('LocalScript', FarmButton)
 
