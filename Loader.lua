@@ -1,4 +1,5 @@
 local gameid = game.PlaceId
+--yeah you can use this
 if gameid == nil then
   game.Players.LocalPlayer:Kick("Please Rejoin")
 end
