@@ -1,5 +1,5 @@
 while true do
-  wait(1)
+  wait(3.45)
   local args = {
       [1] = "Royal Jelly Dispenser"
   }
