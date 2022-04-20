@@ -304,8 +304,10 @@ local function BYXA_fake_script() -- Autofarm.AutoFarmScript
 			root = char:WaitForChild("HumanoidRootPart")
 			human = char:WaitForChild("Humanoid")
 			wait(0.75)
-			if game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value) ~= nil then
-				root.CFrame = game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value).CFrame
+			if game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value) then
+				if human.Health == 0 and enabled.Value then
+					root.CFrame = game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value).CFrame
+				end
 			end
 			selling = false
 			died = false
@@ -321,10 +323,19 @@ local function BYXA_fake_script() -- Autofarm.AutoFarmScript
 				game:GetService("ReplicatedStorage").Events.PlayerHiveCommand:FireServer(unpack(args))
 				repeat
 					wait(0.25)
+					if died then
+						break
+					end
+					if not enabled.Value then
+						break
+					end
+					if not canfarm then
+						break
+					end
 				until game.Players.LocalPlayer.CoreStats.Pollen.Value < 1
 				wait(5)
 				if game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value) then
-					if human.Health == 0 then
+					if human.Health == 0 and enabled.Value then
 						root.CFrame = game.Workspace.FlowerZones:FindFirstChild(FieldValue.Value).CFrame
 					end
 				end
@@ -466,9 +477,7 @@ game.Workspace.Collectibles.ChildAdded:Connect(function(child)
 	local magni = (root.Position - child.Position).Magnitude
 	if magni <= 72 then
 		if child then
-			if not selling and canfarm and not died then
-           			human:MoveTo(child.Position)
-			end
+           		human:MoveTo(child.Position)
 		end
 	end
 end)
