@@ -1,0 +1,7 @@
+while true do
+  wait(1)
+  local args = {
+      [1] = "Royal Jelly Dispenser"
+  }
+  game:GetService("ReplicatedStorage").Events.ToyEvent:FireServer(unpack(args))
+end
